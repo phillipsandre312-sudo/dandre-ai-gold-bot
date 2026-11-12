@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090a0e">
+<title>DANDRE AI GOLD BOT V1</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090a0e;color:#f5f5f5;font-family:Arial,sans-serif;padding:18px}
+header{display:flex;justify-content:space-between;align-items:center}
+h1{font-size:23px;color:#e9bd58;margin:5px 0}
+.sub{color:#92929d;font-size:11px}
+.tag{background:#183d29;color:#64e89b;padding:8px;border-radius:20px;font-size:11px}
+.panel{background:#15171f;border:1px solid #302b21;border-radius:15px;padding:17px;margin-top:17px}
+.label{font-size:11px;color:#aaa}
+.price{font-size:35px;font-weight:bold;margin:12px 0;color:#e9bd58}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.value{font-size:20px;font-weight:bold;margin-top:9px}
+.gold{color:#e9bd58}
+.green{color:#55e697}
+.pink{color:#fa65a9}
+button{border:0;border-radius:11px;padding:16px 8px;font-weight:bold;font-size:14px;color:white;width:100%;cursor:pointer}
+.start{background:#176de0}
+.stop{background:#d52c7c}
+button:disabled{opacity:.4}
+.small{font-size:12px;color:#aaa;line-height:1.6}
+.status{font-size:16px;font-weight:bold;color:#e9bd58;margin-top:10px}
+hr{border:0;border-top:1px solid #30313a;margin:15px 0}
+footer{text-align:center;color:#777;font-size:10px;margin:22px 0}
+</style>
+</head>
+<body>
+<header>
+<div>
+<h1>DANDRE AI</h1>
+<div class="sub">GOLD BOT V1 • DERIV MT5</div>
+</div>
+<div class="tag">● DEMO MODE</div>
+</header>
+
+<div class="panel">
+<div class="label">TRADING MARKET</div>
+<div class="price">XAUUSD</div>
+<div class="sub">GOLD / US DOLLAR</div>
+<hr>
+<div class="grid">
+<div>
+<div class="label">TIMEFRAME</div>
+<div class="value">M1 / M5</div>
+</div>
+<div>
+<div class="label">TRADING MODE</div>
+<div class="value green">DEMO</div>
+</div>
+</div>
+</div>
+
+<div class="grid">
+<div class="panel">
+<div class="label">MARKET SIGNAL</div>
+<div class="value gold" id="signal">WAIT</div>
+</div>
+<div class="panel">
+<div class="label">SCANNER STATUS</div>
+<div class="value" id="scanner">STOPPED</div>
+</div>
+</div>
+
+<div class="panel">
+<div class="label">BOT CONTROL CENTER</div>
+<div class="status" id="status">BOT IS STOPPED</div>
+<hr>
+<div class="grid">
+<button class="start" id="start">START BOT</button>
+<button class="stop" id="stop">STOP BOT</button>
+</div>
+<p class="small" id="message">Scanner preview only. No broker connection.</p>
+</div>
+
+<div class="panel">
+<div class="label">STRATEGY SETTINGS</div>
+<p>EMA FAST <b class="gold">9</b></p>
+<p>EMA MIDDLE <b class="gold">21</b></p>
+<p>EMA TREND <b class="gold">50</b></p>
+<p>RSI PERIOD <b class="gold">14</b></p>
+<p>ENTRY <b>M1</b> • CONFIRMATION <b>M5</b></p>
+<hr>
+<div class="grid">
+<div>
+<div class="label">RISK PER TRADE</div>
+<div class="value gold">0.5%</div>
+</div>
+<div>
+<div class="label">EXECUTION</div>
+<div class="value green">DEMO ONLY</div>
+</div>
+</div>
+</div>
+
+<div class="panel">
+<div class="label">TRADE HISTORY</div>
+<p class="small" id="history">No trades recorded yet.</p>
+<div class="label">DAILY PROFIT / LOSS</div>
+<div class="value gold">$0.00</div>
+</div>
+
+<footer>
+DANDRE AI GOLD BOT V1<br>
+DEMO TESTING • RISK CONTROL FIRST<br>
+START AND STOP BUTTONS ARE LOCAL PREVIEW CONTROLS
+</footer>
+
+<script>
+const start=document.getElementById("start");
+const stop=document.getElementById("stop");
+const scanner=document.getElementById("scanner");
+const status=document.getElementById("status");
+const message=document.getElementById("message");
+
+start.onclick=()=>{
+scanner.textContent="PREVIEW ON";
+scanner.style.color="#55e697";
+status.textContent="SCANNER PREVIEW RUNNING";
+status.style.color="#55e697";
+message.textContent="Dashboard preview active. No live market scanning or trades.";
+start.disabled=true;
+stop.disabled=false;
+};
+
+stop.onclick=()=>{
+scanner.textContent="STOPPED";
+scanner.style.color="#fa65a9";
+status.textContent="BOT IS STOPPED";
+status.style.color="#fa65a9";
+message.textContent="Preview stopped. No broker connection.";
+start.disabled=false;
+stop.disabled=true;
+};
+
+stop.disabled=true;
+</script>
+</body>
+</html>
